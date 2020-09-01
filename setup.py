@@ -11,6 +11,7 @@ VERSION = open(join(*PATH)).read().strip()
 setup(name=NAME,
       version=VERSION,
       description="Plone RestAPI endpoint for Zotero",
+      long_description_content_type="text/x-rst",
       long_description=(
           open("README.rst").read() + "\n" +
           open(os.path.join("docs", "HISTORY.txt")).read()

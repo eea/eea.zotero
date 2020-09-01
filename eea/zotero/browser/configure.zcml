@@ -3,4 +3,11 @@
   xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="eea">
 
+  <browser:page
+    name="zotero-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    permission="eea.zotero.settings.edit"
+    class=".controlpanel.ZoteroControlPanelView"
+    />
+
 </configure>

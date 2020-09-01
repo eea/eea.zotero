@@ -15,11 +15,9 @@ The eea.zotero is a Plone add-on
 
 Main features
 =============
-It comes with plenty of configuration options and features like:
 
-1. Easy to install/uninstall via Site Setup > Add-ons
-2.
-3.
+1. Configure Zotero API via Site Setup > Zotero
+2. RestAPI endpoint @zotero to get these settings.
 
 Install
 =======

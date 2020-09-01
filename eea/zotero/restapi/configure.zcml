@@ -1,0 +1,17 @@
+<configure 
+  xmlns="http://namespaces.zope.org/zope" 
+  xmlns:plone="http://namespaces.plone.org/plone">
+
+  <adapter
+    factory=".controlpanel.ZoteroControlpanel"
+    name="zotero" />
+
+  <plone:service
+    method="GET"
+    name="@zotero"
+    for="Products.CMFCore.interfaces.ISiteRoot"
+    factory=".get.ZoteroGet"
+    permission="eea.zotero.settings.view"
+    />
+
+</configure>

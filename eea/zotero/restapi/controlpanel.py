@@ -9,6 +9,8 @@ from eea.zotero.interfaces import IEeaZoteroLayer
 
 @adapter(Interface, IEeaZoteroLayer)
 class ZoteroControlpanel(RegistryConfigletPanel):
+    """ Zotero Control Panel
+    """
     schema = IZoteroClientSettings
     configlet_id = "zotero"
     configlet_category_id = "Products"

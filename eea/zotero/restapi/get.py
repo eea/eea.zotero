@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+""" RestAPI enpoint @zotero GET
+"""
 from eea.zotero.interfaces import IZoteroClientSettings
 from plone import api
 from plone.restapi.services import Service
@@ -8,10 +9,11 @@ from zope.publisher.interfaces import IPublishTraverse
 
 @implementer(IPublishTraverse)
 class ZoteroGet(Service):
-    def __init__(self, context, request):
-        super(ZoteroGet, self).__init__(context, request)
-
+    """ Zotero GET
+    """
     def reply(self):
+        """ Reply
+        """
         return {
             "server": api.portal.get_registry_record(
                 "server", interface=IZoteroClientSettings, default=""),

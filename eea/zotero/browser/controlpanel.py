@@ -13,4 +13,6 @@ class ZoteroControlPanelForm(controlpanel.RegistryEditForm):
 
 
 class ZoteroControlPanelView(controlpanel.ControlPanelFormWrapper):
+    """ Zotero Control Panel
+    """
     form = ZoteroControlPanelForm

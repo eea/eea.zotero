@@ -20,11 +20,11 @@ setup(name=NAME,
           "Framework :: Plone",
           "Framework :: Plone :: Addon",
           "Framework :: EEA :: Addon",
+          "Framework :: Plone :: 4.3",
           "Framework :: Plone :: 5.2",
           "Programming Language :: Python",
           "Programming Language :: Python :: 2.7",
-          "Programming Language :: Python :: 3.6",
-          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
           "Operating System :: OS Independent",
           "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
       ],
@@ -37,10 +37,11 @@ setup(name=NAME,
       namespace_packages=['eea'],
       include_package_data=True,
       zip_safe=False,
-            python_requires="==2.7, >=3.6",
-            install_requires=[
+      python_requires="==2.7, >=3.6",
+      install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'plone.restapi'
       ],
       extras_require={
           'test': [

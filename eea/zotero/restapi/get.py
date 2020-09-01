@@ -13,7 +13,10 @@ class ZoteroGet(Service):
 
     def reply(self):
         return {
-            "server": api.portal.get_registry_record("server", interface=IZoteroClientSettings, default=""),
-            "password": api.portal.get_registry_record("password", interface=IZoteroClientSettings, default=""),
-            "style": api.portal.get_registry_record("style", interface=IZoteroClientSettings, default=""),
+            "server": api.portal.get_registry_record(
+                "server", interface=IZoteroClientSettings, default=""),
+            "password": api.portal.get_registry_record(
+                "password", interface=IZoteroClientSettings, default=""),
+            "style": api.portal.get_registry_record(
+                "style", interface=IZoteroClientSettings, default=""),
         }

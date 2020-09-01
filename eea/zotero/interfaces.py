@@ -5,6 +5,7 @@ from zope import schema
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from eea.zotero import EEAMessageFactory as _
 
+
 class IEeaZoteroLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
@@ -12,7 +13,7 @@ class IEeaZoteroLayer(IDefaultBrowserLayer):
 class IZoteroClientSettings(Interface):
     """ Client settings for Zotero
     """
-    server = schema.URI(
+    server = schema.TextLine(
         title=_(u"Zotero API URL"),
         description=_(u"Zotero API URL including user/group id"),
         default=u"https://api.zotero.org/users/12345"
@@ -26,6 +27,7 @@ class IZoteroClientSettings(Interface):
 
     style = schema.TextLine(
         title=_(u"Zotero citation style"),
-        description=_("Zotero citation style, e.g.: oxford or an URL to a .csl file"),
+        description=_(
+            "Zotero citation style, e.g.: oxford or an URL to a .csl file"),
         default=u"https://www.eea.europa.eu/zotero/eea.csl"
     )

@@ -16,10 +16,7 @@ pipeline {
           "JS Hint": {
             node(label: 'docker') {
               script {
-                try {
                   sh '''docker run -i --rm --name="$BUILD_TAG-jshint" -e GIT_SRC="https://github.com/eea/$GIT_NAME.git" -e GIT_NAME="$GIT_NAME" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/jshint'''
-                } catch (err) {
-                  echo "Unstable: ${err}"
                 }
               }
             }
@@ -28,10 +25,7 @@ pipeline {
           "CSS Lint": {
             node(label: 'docker') {
               script {
-                try {
                   sh '''docker run -i --rm --name="$BUILD_TAG-csslint" -e GIT_SRC="https://github.com/eea/$GIT_NAME.git" -e GIT_NAME="$GIT_NAME" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/csslint'''
-                } catch (err) {
-                  echo "Unstable: ${err}"
                 }
               }
             }
@@ -40,10 +34,7 @@ pipeline {
           "PEP8": {
             node(label: 'docker') {
               script {
-                try {
                   sh '''docker run -i --rm --name="$BUILD_TAG-pep8" -e GIT_SRC="https://github.com/eea/$GIT_NAME.git" -e GIT_NAME="$GIT_NAME" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/pep8'''
-                } catch (err) {
-                  echo "Unstable: ${err}"
                 }
               }
             }
@@ -52,10 +43,7 @@ pipeline {
           "PyLint": {
             node(label: 'docker') {
               script {
-                try {
                   sh '''docker run -i --rm --name="$BUILD_TAG-pylint" -e GIT_SRC="https://github.com/eea/$GIT_NAME.git" -e GIT_NAME="$GIT_NAME" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/pylint'''
-                } catch (err) {
-                  echo "Unstable: ${err}"
                 }
               }
             }
@@ -99,11 +87,11 @@ pipeline {
     stage('Tests') {
       steps {
         parallel(
-          "Plone4": {
-            node(label: 'docker') {
-              sh '''docker run -i --rm --name="$BUILD_TAG-plone4" -e GIT_BRANCH="$BRANCH_NAME" -e ADDONS="$GIT_NAME" -e DEVELOP="src/$GIT_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/plone-test:4 -v -vv -s $GIT_NAME'''
-            }
-          },
+          // "Plone4": {
+          //   node(label: 'docker') {
+          //     sh '''docker run -i --rm --name="$BUILD_TAG-plone4" -e GIT_BRANCH="$BRANCH_NAME" -e ADDONS="$GIT_NAME" -e DEVELOP="src/$GIT_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/plone-test:4 -v -vv -s $GIT_NAME'''
+          //   }
+          // },
 
           "Plone5": {
             node(label: 'docker') {

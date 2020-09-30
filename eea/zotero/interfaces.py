@@ -25,6 +25,12 @@ class IZoteroClientSettings(Interface):
         default=u""
     )
 
+    default = schema.TextLine(
+        title=_(u"Zotero default collection"),
+        description=(u"Zotero collection id where to store new citations"),
+        default=u""
+    )
+
     style = schema.TextLine(
         title=_(u"Zotero citation style"),
         description=_(

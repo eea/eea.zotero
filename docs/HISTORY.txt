@@ -1,9 +1,13 @@
 Changelog
 =========
 
+1.1 - (2020-09-30)
+---------------------------
+* Add default collection where to store new citations
+  [@avoinea refs #120538]
+
 1.0 - (2020-09-01)
 -----------------------
 
 * Initial release: Configure Zotero via controlpanel and @zotero RestAPI endpoint
   [@avoinea refs #120538]
-

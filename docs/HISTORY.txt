@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.2-dev0 - (unreleased)
+---------------------------
+1.2 - (2020-10-05)
+---------------------------
+* Add default collection also to RestAPI
+  [@avoinea refs #120538]
+
 1.1 - (2020-09-30)
 ---------------------------
 * Add default collection where to store new citations

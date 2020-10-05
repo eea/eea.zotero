@@ -19,6 +19,8 @@ class ZoteroGet(Service):
                 "server", interface=IZoteroClientSettings, default=""),
             "password": api.portal.get_registry_record(
                 "password", interface=IZoteroClientSettings, default=""),
+            "default": api.portal.get_registry_record(
+                "default", interface=IZoteroClientSettings, default=""),
             "style": api.portal.get_registry_record(
                 "style", interface=IZoteroClientSettings, default=""),
         }

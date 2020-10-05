@@ -3,6 +3,10 @@ Changelog
 
 1.2 - (2020-10-05)
 ---------------------------
+* Change: Add default collection also to RestAPI
+  [avoinea]
+1.2 - (2020-10-05)
+---------------------------
 * Add default collection also to RestAPI
   [@avoinea refs #120538]
 

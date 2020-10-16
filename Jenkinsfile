@@ -3,7 +3,7 @@ pipeline {
 
   environment {
         GIT_NAME = "eea.zotero"
-        VERSIONS= = "plone.restapi=7.0.0a6.eea-dev1 plone.schema=1.2.1"
+        VERSIONS = "plone.restapi=7.0.0a6.eea-dev1 plone.schema=1.2.1"
         SONARQUBE_TAGS = "www.eea.europa.eu"
         FTEST_DIR = "eea/zotero/ftests"
     }

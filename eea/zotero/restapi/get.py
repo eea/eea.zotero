@@ -1,5 +1,5 @@
-""" RestAPI enpoint @zotero GET
-"""
+"""RestAPI enpoint @zotero GET"""
+
 from eea.zotero.interfaces import IZoteroClientSettings
 from plone import api
 from plone.restapi.services import Service
@@ -9,18 +9,21 @@ from zope.publisher.interfaces import IPublishTraverse
 
 @implementer(IPublishTraverse)
 class ZoteroGet(Service):
-    """ Zotero GET
-    """
+    """Zotero GET"""
+
     def reply(self):
-        """ Reply
-        """
+        """Reply"""
         return {
             "server": api.portal.get_registry_record(
-                "server", interface=IZoteroClientSettings, default=""),
+                "server", interface=IZoteroClientSettings, default=""
+            ),
             "password": api.portal.get_registry_record(
-                "password", interface=IZoteroClientSettings, default=""),
+                "password", interface=IZoteroClientSettings, default=""
+            ),
             "default": api.portal.get_registry_record(
-                "default", interface=IZoteroClientSettings, default=""),
+                "default", interface=IZoteroClientSettings, default=""
+            ),
             "style": api.portal.get_registry_record(
-                "style", interface=IZoteroClientSettings, default=""),
+                "style", interface=IZoteroClientSettings, default=""
+            ),
         }

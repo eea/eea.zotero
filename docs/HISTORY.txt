@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.5 - (2025-11-18)
+---------------------------
+* Change: Replace Python linting to ruff
+  [mihaidobrescu1111 = refs #286821]
+* Change: Add plone6 tests
+  [mihaidobrescu1111 = refs #293593]
+
 1.4 - (2021-11-11)
 ---------------------------
 * Change: Fix package classifiers and python_requires

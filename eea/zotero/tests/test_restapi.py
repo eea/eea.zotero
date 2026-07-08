@@ -1,10 +1,11 @@
-"""Tests for ZoteroGet REST API endpoint."""
+"""Tests for ZoteroGet REST API endpoint, controlpanels, and package imports."""
 
 import unittest
 from unittest.mock import patch, MagicMock
 
 from eea.zotero.restapi.get import ZoteroGet
-from eea.zotero.interfaces import IZoteroClientSettings
+from eea.zotero.interfaces import IZoteroClientSettings, IEeaZoteroLayer
+from eea.zotero import EEAMessageFactory
 
 
 class TestZoteroGetReply(unittest.TestCase):
@@ -65,7 +66,6 @@ class TestZoteroGetReply(unittest.TestCase):
         self.service.reply()
         for call in mock_registry.call_args_list:
             args, kwargs = call
-            # interface should be IZoteroClientSettings (positional or kwarg)
             iface = kwargs.get("interface") or (args[1] if len(args) > 1 else None)
             self.assertEqual(iface, IZoteroClientSettings)
 
@@ -91,6 +91,66 @@ class TestZoteroGetReply(unittest.TestCase):
         )
         self.service.reply()
         self.assertEqual(mock_registry.call_count, 4)
+
+
+class TestZoteroRestapiControlpanel(unittest.TestCase):
+    """Test ZoteroControlpanel REST API controlpanel."""
+
+    def test_schema_is_izoterosettings(self):
+        """Test that controlpanel schema is IZoteroClientSettings."""
+        from eea.zotero.restapi.controlpanel import ZoteroControlpanel
+        self.assertEqual(ZoteroControlpanel.schema, IZoteroClientSettings)
+
+    def test_configlet_id(self):
+        """Test that configlet_id is zotero."""
+        from eea.zotero.restapi.controlpanel import ZoteroControlpanel
+        self.assertEqual(ZoteroControlpanel.configlet_id, "zotero")
+
+    def test_configlet_category_id(self):
+        """Test that configlet_category_id is Products."""
+        from eea.zotero.restapi.controlpanel import ZoteroControlpanel
+        self.assertEqual(ZoteroControlpanel.configlet_category_id, "Products")
+
+    def test_schema_prefix_is_none(self):
+        """Test that schema_prefix is None."""
+        from eea.zotero.restapi.controlpanel import ZoteroControlpanel
+        self.assertIsNone(ZoteroControlpanel.schema_prefix)
+
+
+class TestZoteroBrowserControlpanel(unittest.TestCase):
+    """Test Zotero browser controlpanel."""
+
+    def test_form_id(self):
+        """Test that form id is zotero."""
+        from eea.zotero.browser.controlpanel import ZoteroControlPanelForm
+        self.assertEqual(ZoteroControlPanelForm.id, "zotero")
+
+    def test_form_schema(self):
+        """Test that form schema is IZoteroClientSettings."""
+        from eea.zotero.browser.controlpanel import ZoteroControlPanelForm
+        self.assertEqual(ZoteroControlPanelForm.schema, IZoteroClientSettings)
+
+    def test_view_form_is_set(self):
+        """Test that view form is ZoteroControlPanelForm."""
+        from eea.zotero.browser.controlpanel import ZoteroControlPanelView, ZoteroControlPanelForm
+        self.assertEqual(ZoteroControlPanelView.form, ZoteroControlPanelForm)
+
+
+class TestZoteroPackageInit(unittest.TestCase):
+    """Test eea.zotero package initialization."""
+
+    def test_message_factory(self):
+        """Test that EEAMessageFactory is defined."""
+        self.assertIsNotNone(EEAMessageFactory)
+
+    def test_message_factory_domain(self):
+        """Test that EEAMessageFactory domain is eea."""
+        self.assertEqual(EEAMessageFactory.domain, "eea")
+
+    def test_initialize_is_callable(self):
+        """Test that initialize function exists and is callable."""
+        from eea.zotero import initialize
+        self.assertTrue(callable(initialize))
 
 
 class TestZoteroInterfaces(unittest.TestCase):
@@ -133,6 +193,10 @@ class TestZoteroInterfaces(unittest.TestCase):
     def test_default_field_default_empty(self):
         """Test default field default is empty."""
         self.assertEqual(IZoteroClientSettings["default"].default, "")
+
+    def test_browser_layer_exists(self):
+        """Test that IEeaZoteroLayer interface exists."""
+        self.assertIsNotNone(IEeaZoteroLayer)
 
 
 def test_suite():

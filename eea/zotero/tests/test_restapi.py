@@ -29,7 +29,9 @@ class TestZoteroGetReply(unittest.TestCase):
     def test_reply_returns_dict_with_all_keys(self, mock_registry):
         """Test that reply returns dict with server, password, default, style."""
         mock_registry.side_effect = (
-            lambda name, interface=None, default=None: self.MOCK_REGISTRY.get(name, default)
+            lambda name, interface=None, default=None: self.MOCK_REGISTRY.get(
+                name, default
+            )
         )
         result = self.service.reply()
         self.assertIsInstance(result, dict)
@@ -42,7 +44,9 @@ class TestZoteroGetReply(unittest.TestCase):
     def test_reply_returns_correct_values(self, mock_registry):
         """Test that reply returns correct values from registry."""
         mock_registry.side_effect = (
-            lambda name, interface=None, default=None: self.MOCK_REGISTRY.get(name, default)
+            lambda name, interface=None, default=None: self.MOCK_REGISTRY.get(
+                name, default
+            )
         )
         result = self.service.reply()
         self.assertEqual(result["server"], "https://api.zotero.org/users/6732")
@@ -54,7 +58,9 @@ class TestZoteroGetReply(unittest.TestCase):
     def test_reply_uses_izoterosettings_interface(self, mock_registry):
         """Test that reply queries registry with IZoteroClientSettings interface."""
         mock_registry.side_effect = (
-            lambda name, interface=None, default=None: self.MOCK_REGISTRY.get(name, default)
+            lambda name, interface=None, default=None: self.MOCK_REGISTRY.get(
+                name, default
+            )
         )
         self.service.reply()
         for call in mock_registry.call_args_list:
@@ -79,7 +85,9 @@ class TestZoteroGetReply(unittest.TestCase):
     def test_reply_calls_registry_four_times(self, mock_registry):
         """Test that reply calls get_registry_record exactly 4 times."""
         mock_registry.side_effect = (
-            lambda name, interface=None, default=None: self.MOCK_REGISTRY.get(name, default)
+            lambda name, interface=None, default=None: self.MOCK_REGISTRY.get(
+                name, default
+            )
         )
         self.service.reply()
         self.assertEqual(mock_registry.call_count, 4)

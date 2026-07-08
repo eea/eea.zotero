@@ -155,7 +155,7 @@ class TestZoteroPackageInit(unittest.TestCase):
 
     def test_message_factory_domain(self):
         """Test that EEAMessageFactory domain is eea."""
-        self.assertEqual(EEAMessageFactory.domain, "eea")
+        self.assertEqual(EEAMessageFactory._domain, "eea")
 
     def test_initialize_is_callable(self):
         """Test that initialize function exists and is callable."""

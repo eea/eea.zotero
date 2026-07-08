@@ -99,21 +99,25 @@ class TestZoteroRestapiControlpanel(unittest.TestCase):
     def test_schema_is_izoterosettings(self):
         """Test that controlpanel schema is IZoteroClientSettings."""
         from eea.zotero.restapi.controlpanel import ZoteroControlpanel
+
         self.assertEqual(ZoteroControlpanel.schema, IZoteroClientSettings)
 
     def test_configlet_id(self):
         """Test that configlet_id is zotero."""
         from eea.zotero.restapi.controlpanel import ZoteroControlpanel
+
         self.assertEqual(ZoteroControlpanel.configlet_id, "zotero")
 
     def test_configlet_category_id(self):
         """Test that configlet_category_id is Products."""
         from eea.zotero.restapi.controlpanel import ZoteroControlpanel
+
         self.assertEqual(ZoteroControlpanel.configlet_category_id, "Products")
 
     def test_schema_prefix_is_none(self):
         """Test that schema_prefix is None."""
         from eea.zotero.restapi.controlpanel import ZoteroControlpanel
+
         self.assertIsNone(ZoteroControlpanel.schema_prefix)
 
 
@@ -123,16 +127,22 @@ class TestZoteroBrowserControlpanel(unittest.TestCase):
     def test_form_id(self):
         """Test that form id is zotero."""
         from eea.zotero.browser.controlpanel import ZoteroControlPanelForm
+
         self.assertEqual(ZoteroControlPanelForm.id, "zotero")
 
     def test_form_schema(self):
         """Test that form schema is IZoteroClientSettings."""
         from eea.zotero.browser.controlpanel import ZoteroControlPanelForm
+
         self.assertEqual(ZoteroControlPanelForm.schema, IZoteroClientSettings)
 
     def test_view_form_is_set(self):
         """Test that view form is ZoteroControlPanelForm."""
-        from eea.zotero.browser.controlpanel import ZoteroControlPanelView, ZoteroControlPanelForm
+        from eea.zotero.browser.controlpanel import (
+            ZoteroControlPanelView,
+            ZoteroControlPanelForm,
+        )
+
         self.assertEqual(ZoteroControlPanelView.form, ZoteroControlPanelForm)
 
 
@@ -150,6 +160,7 @@ class TestZoteroPackageInit(unittest.TestCase):
     def test_initialize_is_callable(self):
         """Test that initialize function exists and is callable."""
         from eea.zotero import initialize
+
         self.assertTrue(callable(initialize))
 
 
